@@ -442,7 +442,7 @@ a { color: inherit; }
 
   .hero__grade { grid-template-columns: 1.15fr .85fr; gap: 4rem; }
 
-  .duas-colunas { grid-template-columns: 1fr 1.25fr; gap: 4rem; }
+  .duas-colunas { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 4rem; }
   .duas-colunas__titulo { position: sticky; top: 6rem; align-self: start; }
 
   .areas { grid-template-columns: 1.3fr 1fr; align-items: stretch; }
@@ -465,18 +465,12 @@ a { color: inherit; }
 .foto-perfil {
   display: block;
   width: 100%;
-  max-width: 22rem;
+  max-width: 20rem;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: center 20%;
-  border-radius: var(--raio);
+  object-position: center top;
+  border-radius: 999px 999px var(--raio) var(--raio); /* formato de arco, igual ao do topo do site */
   margin: 2rem 0 0;
   background: var(--vinho-claro);
   box-shadow: 0 1.25rem 2.5rem -1rem rgba(90, 6, 24, .35);
-}
-
-@media (min-width: 48rem) {
-  .foto-perfil {
-    max-width: 100%;
-  }
 }
