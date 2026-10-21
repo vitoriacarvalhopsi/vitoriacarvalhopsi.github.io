@@ -465,11 +465,11 @@ a { color: inherit; }
 .foto-perfil {
   display: block;
   width: 100%;
-  max-width: 20rem;
-  aspect-ratio: 4 / 5;
+  max-width: 24rem;
+  aspect-ratio: 1 / 1;          /* quadrada: mostra mais da foto */
   object-fit: cover;
-  object-position: center top;
-  border-radius: 999px 999px var(--raio) var(--raio); /* formato de arco, igual ao do topo do site */
+  object-position: 75% 10%;     /* puxa o enquadramento para a direita, onde você está */
+  border-radius: var(--raio);   /* cantos arredondados simples */
   margin: 2rem 0 0;
   background: var(--vinho-claro);
   box-shadow: 0 1.25rem 2.5rem -1rem rgba(90, 6, 24, .35);
