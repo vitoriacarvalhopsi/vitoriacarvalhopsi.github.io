@@ -456,26 +456,27 @@ a { color: inherit; }
 /* ---------- 12. ACESSIBILIDADE: reduzir movimento ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-   /* ---------- Foto de perfil (Sobre mim) ---------- */
+  .r { animation: none; stroke-dashoffset: 0; }
+  .ponto { animation: none; opacity: 1; }
+  .btn, .canais a { transition: none; }
+}
+
+/* ---------- 13. FOTO DE PERFIL (Sobre mim) ---------- */
 .foto-perfil {
   display: block;
   width: 100%;
-  max-width: 22rem;            /* tamanho confortável no celular */
-  aspect-ratio: 4 / 5;         /* formato retrato, sem distorcer */
-  object-fit: cover;           /* preenche o espaço cortando o excesso */
-  object-position: center 20%; /* mantém o rosto em foco */
-  border-radius: var(--raio);  /* cantos arredondados (1.25rem) */
+  max-width: 22rem;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: var(--raio);
   margin: 2rem 0 0;
+  background: var(--vinho-claro);
   box-shadow: 0 1.25rem 2.5rem -1rem rgba(90, 6, 24, .35);
 }
 
-/* No computador, ocupa toda a largura da coluna do título */
 @media (min-width: 48rem) {
   .foto-perfil {
     max-width: 100%;
   }
-}
-  .r { animation: none; stroke-dashoffset: 0; }
-  .ponto { animation: none; opacity: 1; }
-  .btn, .canais a { transition: none; }
 }
