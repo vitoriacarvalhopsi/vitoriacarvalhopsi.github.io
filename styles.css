@@ -465,12 +465,12 @@ a { color: inherit; }
 .foto-perfil {
   display: block;
   width: 100%;
-  max-width: 24rem;
-  aspect-ratio: 1 / 1;          /* quadrada: mostra mais da foto */
-  object-fit: cover;
-  object-position: 75% 10%;     /* puxa o enquadramento para a direita, onde você está */
-  border-radius: var(--raio);   /* cantos arredondados simples */
-  margin: 2rem 0 0;
+  max-width: 16rem;              /* Diminui o tamanho da foto para ficar mais harmoniosa */
+  aspect-ratio: 1 / 1;           /* Garante que a área seja um quadrado perfeito para a base */
+  object-fit: cover;             /* Preenche o espaço sem achatar a foto */
+  object-position: center 20%;   /* Centraliza o enquadramento, focando no rosto */
+  border-radius: 50%;            /* Transforma a imagem num círculo perfeito */
+  margin: 0 auto 2rem;           /* Centraliza a foto e dá um respiro embaixo */
   background: var(--vinho-claro);
-  box-shadow: 0 1.25rem 2.5rem -1rem rgba(90, 6, 24, .35);
+  box-shadow: 0 1rem 2rem -0.5rem rgba(90, 6, 24, .25); /* Sombra mais suave para combinar com o formato redondo */
 }
