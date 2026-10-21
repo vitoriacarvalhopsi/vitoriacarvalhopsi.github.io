@@ -464,13 +464,13 @@ a { color: inherit; }
 /* ---------- 13. FOTO DE PERFIL (Sobre mim) ---------- */
 .foto-perfil {
   display: block;
-  width: 100%;
-  max-width: 16rem;              /* Diminui o tamanho da foto para ficar mais harmoniosa */
-  aspect-ratio: 1 / 1;           /* Garante que a área seja um quadrado perfeito para a base */
-  object-fit: cover;             /* Preenche o espaço sem achatar a foto */
-  object-position: center 20%;   /* Centraliza o enquadramento, focando no rosto */
-  border-radius: 50%;            /* Transforma a imagem num círculo perfeito */
-  margin: 0 auto 2rem;           /* Centraliza a foto e dá um respiro embaixo */
+  width: 16rem;                  /* Largura fixa */
+  height: 16rem;                 /* Altura fixa idêntica à largura */
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 50%;            /* Círculo perfeito */
+  margin: 0 auto 2rem;
   background: var(--vinho-claro);
-  box-shadow: 0 1rem 2rem -0.5rem rgba(90, 6, 24, .25); /* Sombra mais suave para combinar com o formato redondo */
+  box-shadow: 0 1rem 2rem -0.5rem rgba(90, 6, 24, .25);
+  align-self: flex-start;        /* Impede que a coluna estique a foto */
 }
