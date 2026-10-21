@@ -1,0 +1,462 @@
+/* =========================================================
+   VITÓRIA CARVALHO | PSICÓLOGA
+   Mobile first. Paleta extraída do logotipo.
+   ========================================================= */
+
+/* ---------- 1. TOKENS (cores, tipografia, espaçamento) ---------- */
+:root {
+  /* Cores do logotipo */
+  --vinho:        #5A0618;  /* bordô principal */
+  --vinho-claro:  #740F2A;  /* variação para superfícies sobre o bordô */
+  --vinho-escuro: #3D040F;  /* rodapé */
+  --salvia:       #E0E8CF;  /* verde-sálvia claro */
+  --creme:        #F0EDD6;  /* texto e botões sobre o bordô */
+  --laranja:      #C8672B;  /* detalhe do logotipo (uso decorativo) */
+  --azul:         #A8D2E2;  /* detalhe do logotipo (uso decorativo) */
+
+  /* Tipografia */
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans:  "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Layout */
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+  --max: 70rem;
+  --secao-y: clamp(4rem, 9vw, 7.5rem);
+  --raio: 1.25rem;
+}
+
+/* ---------- 2. BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem; /* compensa o cabeçalho fixo */
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--vinho);
+  background: var(--salvia);
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg { max-width: 100%; display: block; }
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2.4rem, 7.2vw, 4.4rem); }
+h2 { font-size: clamp(1.9rem, 4.6vw, 3rem); }
+h3 { font-size: 1.5rem; }
+
+p { margin: 0 0 1.1em; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--laranja);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--creme);
+  color: var(--vinho);
+  padding: .6rem 1rem;
+  border-radius: .5rem;
+  z-index: 100;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- 3. FAIXAS DE COR (alternância bordô / sálvia) ---------- */
+.faixa { padding-block: var(--secao-y); }
+
+.faixa--vinho  { background: var(--vinho);  color: var(--creme); }
+.faixa--salvia { background: var(--salvia); color: var(--vinho); }
+
+/* ---------- 4. BOTÕES E LINKS ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  text-decoration: none;
+  padding: 1rem 1.9rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  transition: transform .2s ease, background-color .2s ease, color .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+
+/* sobre fundo bordô */
+.btn--claro { background: var(--creme); color: var(--vinho); }
+.btn--claro:hover { background: #fff; }
+
+/* sobre fundo claro */
+.btn--escuro { background: var(--vinho); color: var(--creme); }
+.btn--escuro:hover { background: var(--vinho-claro); }
+
+.link-suave {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .3em;
+}
+.link-suave:hover { text-decoration-thickness: 2px; }
+
+/* ---------- 5. CABEÇALHO ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--vinho);
+  color: var(--creme);
+  border-bottom: 1px solid rgba(240, 237, 214, .14);
+}
+
+.site-header__inner {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: .85rem var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+}
+
+.brand {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+.brand__nome {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.brand__crp { font-size: .75rem; opacity: .75; }
+
+/* Menu mobile */
+.nav-toggle {
+  font: inherit;
+  font-weight: 500;
+  color: inherit;
+  background: transparent;
+  border: 1px solid rgba(240, 237, 214, .5);
+  border-radius: 999px;
+  padding: .4rem 1.1rem;
+  cursor: pointer;
+}
+
+.nav { width: 100%; display: none; }
+.nav.is-open { display: block; }
+.nav ul { list-style: none; margin: 0; padding: .5rem 0 .75rem; }
+.nav a {
+  display: block;
+  padding: .7rem 0;
+  text-decoration: none;
+  font-weight: 500;
+  border-top: 1px solid rgba(240, 237, 214, .12);
+}
+.nav a:hover { text-decoration: underline; text-underline-offset: .3em; }
+
+/* ---------- 6. HERO ---------- */
+.hero { padding-block: clamp(3rem, 8vw, 6rem); overflow: hidden; }
+
+.hero__grade {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Linha de identificação: nome, título e CRP discreto */
+.hero__id {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .35rem .9rem;
+  margin-bottom: 1.6rem;
+}
+.hero__nome {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+.hero__titulo {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.hero__crp {
+  font-size: .8rem;
+  padding: .15rem .7rem;
+  border: 1px solid rgba(240, 237, 214, .45);
+  border-radius: 999px;
+  opacity: .9;
+}
+
+.hero__sub {
+  font-size: 1.15rem;
+  max-width: 34rem;
+  margin: 1.5rem 0 2rem;
+  opacity: .92;
+}
+
+.hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.6rem;
+}
+
+/* Arte do hero */
+.hero__arte {
+  position: relative;
+  width: min(100%, 24rem);
+  aspect-ratio: 4 / 5;
+  margin-inline: auto;
+}
+
+.arco {
+  position: absolute;
+  inset: 0;
+  background: var(--vinho-claro);
+  border-radius: 999px 999px var(--raio) var(--raio);
+}
+
+.hero__ilustracao {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 88%;
+  transform: translateX(-50%);
+}
+
+.rabiscos {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  width: 96%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* Rabiscos desenhados à mão: animam uma única vez ao carregar */
+.r {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: desenhar 1.8s cubic-bezier(.5, 0, .2, 1) forwards;
+}
+.r--azul    { stroke: var(--azul); }
+.r--laranja { stroke: var(--laranja); }
+
+.r:nth-of-type(1) { animation-delay: .2s; }
+.r:nth-of-type(2) { animation-delay: .9s; }
+.r:nth-of-type(3) { animation-delay: .5s; }
+.r:nth-of-type(4) { animation-delay: 1.3s; }
+.r:nth-of-type(5) { animation-delay: .8s; }
+
+.ponto {
+  fill: var(--laranja);
+  opacity: 0;
+  animation: surgir .5s ease forwards;
+}
+.ponto:nth-of-type(1) { animation-delay: 1.6s; }
+.ponto:nth-of-type(2) { animation-delay: 1.8s; }
+.ponto:nth-of-type(3) { animation-delay: 2.0s; }
+
+@keyframes desenhar { to { stroke-dashoffset: 0; } }
+@keyframes surgir   { to { opacity: 1; } }
+
+/* ---------- 7. SOBRE E ABORDAGEM (duas colunas) ---------- */
+.duas-colunas {
+  display: grid;
+  gap: 2rem;
+}
+
+.texto-corrido { max-width: 38rem; }
+.texto-corrido p { font-size: 1.1rem; }
+
+/* Parágrafo de fecho (Sobre mim): a frase-síntese ganha voz de título */
+.texto-corrido .texto-corrido__fecho {
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 3px solid var(--laranja);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  line-height: 1.45;
+}
+
+/* Dimensões (Abordagem) */
+.dimensoes { list-style: none; margin: 1.75rem 0; padding: 0; display: grid; gap: 1.1rem; }
+.dimensoes__item {
+  position: relative;
+  padding-left: 2rem;
+  display: grid;
+}
+.dimensoes__item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .5em;
+  width: .9rem;
+  height: .9rem;
+  border-radius: 50%;
+  background: var(--vinho);
+}
+.dimensoes__item--laranja::before { background: var(--laranja); }
+.dimensoes__item--azul::before    { background: var(--azul); box-shadow: 0 0 0 1.5px var(--vinho); }
+.dimensoes__item--vinho::before   { background: var(--vinho); }
+.dimensoes strong { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; }
+
+/* ---------- 8. ÁREAS DE ATUAÇÃO ---------- */
+.titulo-centro { text-align: center; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+
+.areas { display: grid; gap: 1.5rem; }
+
+.area { padding: clamp(1.75rem, 4vw, 2.75rem); border-radius: var(--raio); }
+.area h3 { margin-bottom: .9rem; }
+
+/* Card 1: preenchido, mais destacado */
+.area--principal { background: var(--creme); color: var(--vinho); }
+
+.area__lista {
+  list-style: none;
+  padding: 0;
+  margin: 1.4rem 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+.area__lista li {
+  padding: .35rem 1rem;
+  border: 1.5px solid var(--vinho);
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: .98rem;
+}
+
+/* Card 2: apenas contorno, mais discreto */
+.area--secundaria {
+  border: 1.5px solid rgba(240, 237, 214, .55);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.area__nota { opacity: .85; font-size: 1rem; margin-bottom: 1.6rem; }
+.area--secundaria .link-suave { margin-top: auto; }
+
+/* ---------- 9. CONTATO ---------- */
+.contato { display: grid; gap: 3rem; }
+.contato__intro p { max-width: 30rem; margin: 1.2rem 0 2rem; font-size: 1.1rem; }
+
+.modalidades {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+.modalidades h3 { font-size: 1.3rem; margin-bottom: .15rem; }
+.modalidades p { margin: 0; opacity: .9; }
+
+.canais { list-style: none; margin: 0; padding: 0; }
+.canais li + li { border-top: 1px solid rgba(240, 237, 214, .2); }
+.canais a {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  text-decoration: none;
+  transition: padding-left .2s ease;
+}
+.canais a:hover { padding-left: .6rem; }
+.canais__nome  { font-size: .9rem; opacity: .75; }
+.canais__valor { font-family: var(--serif); font-weight: 700; font-size: 1.35rem; overflow-wrap: anywhere; }
+
+/* ---------- 10. RODAPÉ ---------- */
+.rodape {
+  background: var(--vinho-escuro);
+  color: var(--creme);
+  padding-block: 2.5rem;
+}
+.rodape__inner { display: grid; gap: 1rem; }
+
+.rodape__assinatura {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .3rem 1rem;
+  margin: 0;
+}
+.rodape__assinatura strong {
+  font-family: var(--serif);
+  font-weight: 800;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+}
+.rodape__assinatura em {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+.rodape__assinatura span { font-size: .95rem; opacity: .85; }
+.rodape__nota { margin: 0; font-size: .85rem; opacity: .7; }
+
+/* ---------- 11. TABLET E DESKTOP ---------- */
+@media (min-width: 48rem) {
+
+  /* Menu horizontal */
+  .nav-toggle { display: none; }
+  .nav { display: block; width: auto; }
+  .nav ul { display: flex; gap: 1.75rem; padding: 0; }
+  .nav a { border-top: 0; padding: .3rem 0; font-size: .98rem; }
+
+  .hero__grade { grid-template-columns: 1.15fr .85fr; gap: 4rem; }
+
+  .duas-colunas { grid-template-columns: 1fr 1.25fr; gap: 4rem; }
+  .duas-colunas__titulo { position: sticky; top: 6rem; align-self: start; }
+
+  .areas { grid-template-columns: 1.3fr 1fr; align-items: stretch; }
+
+  .contato { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .modalidades { grid-template-columns: 1fr 1fr; }
+
+  .rodape__inner { grid-template-columns: 1fr auto; align-items: center; }
+}
+
+/* ---------- 12. ACESSIBILIDADE: reduzir movimento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .r { animation: none; stroke-dashoffset: 0; }
+  .ponto { animation: none; opacity: 1; }
+  .btn, .canais a { transition: none; }
+}
